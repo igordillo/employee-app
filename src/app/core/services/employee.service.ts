@@ -1,15 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { EMPLOYEES_API_ENDPOINT } from '@core/constants';
-import { Employee } from '@core/models/employee.model';
+import { Employee, QueryField } from '@core/models/employee.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class EmployeeService {
   private readonly employees$ = new BehaviorSubject<Employee[]>([]);
 
-  constructor(private readonly httpClient: HttpClient) {
-  }
+  constructor(private readonly httpClient: HttpClient) {}
 
   public getAllEmployees(): void {
     this.httpClient
@@ -21,6 +21,17 @@ export class EmployeeService {
 
   public get employeesStore$(): Observable<Employee[]> {
     return this.employees$.asObservable();
+  }
+
+  public getEmployeesFiltered(field: QueryField, query: string): void {
+    this.httpClient
+      .get<Employee[]>(EMPLOYEES_API_ENDPOINT)
+      .pipe(
+        map((employees) => employees.filter((e) => e[field].includes(query)))
+      )
+      .subscribe((employees: Employee[]) => {
+        this.employees$.next(employees);
+      });
   }
 
   public getEmployee(id: number): Observable<Employee> {
