@@ -1,0 +1,53 @@
+{
+  "employees": [
+    {
+      "name": "Book 1",
+      "surname": "Sara López",
+      "dateOfBirth": "2021-04-24T10:59:47.931Z",
+      "workPosition": "full-stack developer",
+      "id": 2
+    },
+    {
+      "name": "John",
+      "surname": "Smith",
+      "dateOfBirth": "2021-04-24T10:59:47.931Z",
+      "workPosition": "sw admin",
+      "id": 3
+    },
+    {
+      "name": "Juan",
+      "surname": "Gomez",
+      "dateOfBirth": "2021-04-24T10:59:47.931Z",
+      "workPosition": "product manager",
+      "id": 4
+    },
+    {
+      "name": "aaaa",
+      "surname": "surname",
+      "dateOfBirth": "2021-04-24T14:49:22.258Z",
+      "workPosition": "RRHH",
+      "id": 5
+    },
+    {
+      "name": "aaaa",
+      "surname": "surname",
+      "dateOfBirth": "2021-04-24T14:50:37.102Z",
+      "workPosition": "RRHH",
+      "id": 6
+    },
+    {
+      "name": "aaaa",
+      "surname": "surname",
+      "dateOfBirth": "2021-04-24T14:51:44.660Z",
+      "workPosition": "RRHH",
+      "id": 7
+    },
+    {
+      "name": "aaaa",
+      "surname": "surname",
+      "dateOfBirth": "2021-04-24T15:47:06.337Z",
+      "workPosition": "RRHH",
+      "id": 8
+    }
+  ]
+}
