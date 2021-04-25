@@ -12,24 +12,30 @@
     </div>
   </div>
   <div class="col-2 buttons-div">
-    <button
-      mat-raised-button
-      class="float-right mr-5 button-style"
-      color="primary"
-      (click)="onAddButon()"
-      [matTooltip]="'Add' | translate"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-    <button
-      mat-raised-button
-      class="float-right mr-5 button-style green"
-      color="primary"
-      (click)="onRefreshButton()"
-      [matTooltip]="'Refresh' | translate"
-    >
-      <mat-icon>refresh</mat-icon>
-    </button>
+    <div class="row">
+      <div class="col-6">
+        <button
+          mat-raised-button
+          class="button-style green"
+          color="primary"
+          (click)="onRefreshButton()"
+          [matTooltip]="'Refresh' | translate"
+        >
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+      <div class="col-6">
+        <button
+          mat-raised-button
+          class="button-style"
+          color="primary"
+          (click)="onAddButon()"
+          [matTooltip]="'Add' | translate"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 

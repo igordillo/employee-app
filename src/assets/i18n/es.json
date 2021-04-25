@@ -19,5 +19,7 @@
   "Refresh": "Refrescar",
   "Edit": "Editar",
   "Save": "Guardar",
-  "Close": "Cerrar"
+  "Close": "Cerrar",
+  "UserCreatedMsg": "El usuario se creó correctamente",
+  "UserUpdatedMsg": "El usuario se actualizó correctamente"
 }

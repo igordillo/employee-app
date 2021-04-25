@@ -19,5 +19,7 @@
   "Refresh": "Refresh",
   "Edit": "Edit",
   "Save": "Save",
-  "Close": "Close"
+  "Close": "Close",
+  "UserCreatedMsg": "User was created successfuly",
+  "UserUpdatedMsg": "User was updated successfuly"
 }

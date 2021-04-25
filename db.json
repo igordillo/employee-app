@@ -1,116 +1,60 @@
 {
   "employees": [
     {
-      "name": "isaac",
-      "surname": "gordillo",
+      "id": 1,
+      "name": "Isaac",
+      "surname": "Gordillo gómezasd",
       "workPosition": "full-stack developer",
-      "dateOfBirth": "1990-12-20T23:00:00.000Z",
-      "id": 1
+      "dateOfBirth": "1990-12-20T23:00:00.000Z"
     },
     {
       "id": 2,
-      "name": "Ada",
-      "surname": "Asdasd asdasdwwwww",
+      "name": "Sara",
+      "surname": "Lopez",
       "workPosition": "full-stack developer",
       "dateOfBirth": "2021-04-28T22:00:00.000Z"
     },
     {
-      "name": "Sara",
-      "surname": "Lopez Velazquez",
+      "name": "John",
+      "surname": "Smith",
       "workPosition": "front-end developer",
       "dateOfBirth": "2021-04-21T22:00:00.000Z",
       "id": 3
     },
     {
       "id": 4,
-      "name": "Sara",
-      "surname": "Lopez ",
+      "name": "Ana",
+      "surname": "Gomez ",
       "workPosition": "front-end developer",
       "dateOfBirth": "2021-04-29T22:00:00.000Z"
     },
     {
       "id": 5,
-      "name": "Paco",
-      "surname": "Jimenez lopez",
+      "name": "Pedro",
+      "surname": "Jimenez",
       "workPosition": "help desk",
       "dateOfBirth": "2021-04-28T22:00:00.000Z"
     },
     {
-      "name": "Asd",
-      "surname": "Asd",
+      "name": "Juan",
+      "surname": "Ramirez Blasco",
       "workPosition": "front-end developer",
-      "dateOfBirth": "2021-04-22T22:00:00.000Z",
+      "dateOfBirth": "2021-04-29T22:00:00.000Z",
       "id": 6
     },
     {
-      "name": "Loli",
-      "surname": "Jkkk",
-      "workPosition": "sw admin",
-      "dateOfBirth": "1993-01-11T23:00:00.000Z",
+      "name": "Peter",
+      "surname": "Parker",
+      "workPosition": "full-stack developer",
+      "dateOfBirth": "2021-04-28T22:00:00.000Z",
       "id": 7
     },
     {
-      "name": "Hjk",
-      "surname": "Kjhkj",
-      "workPosition": "front-end developer",
-      "dateOfBirth": "2021-04-20T22:00:00.000Z",
+      "name": "Jaime",
+      "surname": "Gaona",
+      "workPosition": "full-stack developer",
+      "dateOfBirth": "2021-04-29T22:00:00.000Z",
       "id": 8
-    },
-    {
-      "name": "Qwr",
-      "surname": "Qwr",
-      "workPosition": "product manager",
-      "dateOfBirth": "2021-04-28T22:00:00.000Z",
-      "id": 9
-    },
-    {
-      "name": "Asd",
-      "surname": "Asd",
-      "workPosition": "product manager",
-      "dateOfBirth": "2021-04-29T22:00:00.000Z",
-      "id": 10
-    },
-    {
-      "name": "A",
-      "surname": "As",
-      "workPosition": "product manager",
-      "dateOfBirth": "2021-04-29T22:00:00.000Z",
-      "id": 11
-    },
-    {
-      "name": "Asd",
-      "surname": "Ww",
-      "workPosition": "scrum master",
-      "dateOfBirth": "2021-04-20T22:00:00.000Z",
-      "id": 12
-    },
-    {
-      "name": "Aaa",
-      "surname": "Sss",
-      "workPosition": "full-stack developer",
-      "dateOfBirth": "2021-04-28T22:00:00.000Z",
-      "id": 13
-    },
-    {
-      "name": "Asdasd",
-      "surname": "Asdasd",
-      "workPosition": "full-stack developer",
-      "dateOfBirth": "2021-04-28T22:00:00.000Z",
-      "id": 14
-    },
-    {
-      "name": "Sadasd",
-      "surname": "Gordilloa",
-      "workPosition": "product manager",
-      "dateOfBirth": "2021-04-21T22:00:00.000Z",
-      "id": 15
-    },
-    {
-      "name": "Asdasd",
-      "surname": "Asdsa",
-      "workPosition": "front-end developer",
-      "dateOfBirth": "1990-12-20T23:00:00.000Z",
-      "id": 16
     }
   ]
 }

@@ -5,6 +5,7 @@ import { Employee } from '@core/models/employee.model';
 import { EmployeeService } from '@core/services/employee.service';
 import { WorkPositionsService } from '@core/services/work-positions.service';
 import { capitalizeText } from '@core/utils';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
 export declare type Action = 'Add' | 'Edit';
@@ -29,7 +30,8 @@ export class EmployeeFormDialogComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly dialogRef: MatDialogRef<EmployeeFormDialogComponent>,
     private readonly toastr: ToastrService,
-    @Inject(MAT_DIALOG_DATA) public data: EmployeeDialogData
+    @Inject(MAT_DIALOG_DATA) public data: EmployeeDialogData,
+    private readonly translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -61,8 +63,9 @@ export class EmployeeFormDialogComponent implements OnInit {
     if (this.data.action === 'Add') {
       this.employeeService.addEmployee(employee).subscribe(() => {
         {
+          const successMsg = this.translate.instant('UserCreatedMsg');
           this.close(true);
-          this.toastr.success('User was created successfuly');
+          this.toastr.success(successMsg);
         }
       });
     }
@@ -70,8 +73,9 @@ export class EmployeeFormDialogComponent implements OnInit {
     if (this.data.action === 'Edit') {
       this.employeeService.editEmployee(employee).subscribe(() => {
         {
+          const successMsg = this.translate.instant('UserUpdatedMsg');
           this.close(true);
-          this.toastr.success('User was edited successfuly');
+          this.toastr.success(successMsg);
         }
       });
     }
