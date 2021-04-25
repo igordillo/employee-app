@@ -1,35 +1,47 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { EmployeeService } from '@core/services/employee.service';
 import { AppComponent } from './app.component';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
+// const translations: any = { CARDS_TITLE: 'This is a test' };
+// class FakeLoader implements TranslateLoader {
+//   getTranslation(lang: string): Observable<any> {
+//     return of(translations);
+//   }
+// }
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule,
+        TranslateModule.forRoot(),
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      providers: [EmployeeService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'employee-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('employee-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('employee-app app is running!');
+  });
+
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
   });
 });

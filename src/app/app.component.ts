@@ -12,7 +12,6 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public title = 'employee-app';
   public employeesList$: Observable<Employee[]> = of(new Array<Employee>());
 
   constructor(
