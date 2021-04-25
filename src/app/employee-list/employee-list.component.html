@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-10">
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="searchInput"
+        type="text"
+        [placeholder]="'SearchPlaceholder' | translate"
+        [(ngModel)]="searchInput"
+        (keyup)="reloadAndFilterEmployees()"
+      />
+    </div>
+  </div>
+  <div class="col-2 buttons-div">
+    <button
+      mat-raised-button
+      class="float-right mr-5 button-style"
+      color="primary"
+      (click)="onAddButon()"
+      [matTooltip]="'Add' | translate"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      class="float-right mr-5 button-style green"
+      color="primary"
+      (click)="onRefreshButton()"
+      [matTooltip]="'Refresh' | translate"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+</div>
+
+<br />
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" translate="Id"></th>
+      <th scope="col" translate="Name"></th>
+      <th scope="col" translate="Surname"></th>
+      <th scope="col" translate="DateOfBirth"></th>
+      <th scope="col" translate="WorkPosition"></th>
+      <th scope="col" translate="Actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="employeesDataTable.length > 0; else noRecordsTemplate">
+      <tr *ngFor="let employee of employeesDataTable">
+        <th>
+          <ngb-highlight [result]="employee.id + ''"></ngb-highlight>
+        </th>
+        <td>
+          <ngb-highlight [result]="employee.name"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="employee.surname"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight
+            [result]="employee.dateOfBirth | date: FORMAT_DATE"
+          ></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="employee.workPosition"></ngb-highlight>
+        </td>
+        <td>
+          <button mat-icon-button (click)="onEditButton(employee)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDeleteButton(employee)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+
+    <ng-template #noRecordsTemplate>
+      <td colspan="6" class="text-center">
+        <span translate="NoRecordsAvailable"></span>
+      </td>
+    </ng-template>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [collectionSize]="collectionSize"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    (pageChange)="refreshEmployees()"
+  >
+  </ngb-pagination>
+  <select
+    class="custom-select"
+    style="width: auto"
+    [(ngModel)]="pageSize"
+    (ngModelChange)="refreshEmployees()"
+  >
+    <option [ngValue]="4">4 {{ "ItemsPerPage" | translate }}</option>
+    <option [ngValue]="6">6 i{{ "ItemsPerPage" | translate }}</option>
+    <option [ngValue]="10">10 i{{ "ItemsPerPage" | translate }}</option>
+  </select>
+</div>

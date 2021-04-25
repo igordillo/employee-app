@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span class="title" translate="Sitetitle"></span>
+  <span class="example-spacer"></span>
+  <mat-form-field appearance="standard">
+    <mat-label translate="Language"></mat-label>
+    <mat-select #langSelect (selectionChange)="onChangeLang(langSelect.value)" value="en">
+      <mat-option *ngFor="let lang of langs" [value]="lang.code">
+        {{ lang.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>

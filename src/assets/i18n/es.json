@@ -1,0 +1,23 @@
+{
+  "Sitetitle": "Empleados APP",
+  "Language": "Seleccione idioma",
+  "Id": "Id",
+  "Name": "Nombre",
+  "Surname": "Apellidos",
+  "DateOfBirth": "Fecha de nacimiento",
+  "WorkPosition": "Puesto de trabajo",
+  "NoRecordsAvailable": "No hay registros disponibles",
+  "ItemsPerPage": "elementos por página",
+  "SearchPlaceholder": "Búsqueda por texto",
+  "Confirm": "Confirmar",
+  "Cancel": "Cancelar",
+  "Delete": "Borrar mpleado",
+  "DeleteText": "¿Está seguro que desea eliminar el empleado/a?. Ésta acción no se podrá revertir",
+  "DeleteSuccess": "El empleado/a se eliminó correctamente",
+  "Employee": "Empleado",
+  "Add": "Añadir",
+  "Refresh": "Refrescar",
+  "Edit": "Editar",
+  "Save": "Guardar",
+  "Close": "Cerrar"
+}

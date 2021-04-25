@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>
+  {{ data.action | translate }} {{ "Employee" | translate }}
+</h2>
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <div class="row">
+      <mat-form-field>
+        <input
+          maxlength="30"
+          matInput
+          [placeholder]="('Name' | translate) + '*'"
+          formControlName="name"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <input
+          maxlength="30"
+          matInput
+          [placeholder]="('Surname' | translate) + '*'"
+          formControlName="surname"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <mat-select
+          formControlName="workPosition"
+          [placeholder]="('WorkPosition' | translate) + '*'"
+        >
+          <mat-option *ngFor="let wp of workPositions" [value]="wp">
+            {{ wp }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <div class="row">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ ("DateOfBirth" | translate) + "*" }}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <mat-dialog-actions class="float-right">
+    <button mat-raised-button (click)="close()" translate="Close"></button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="ml-2"
+      [disabled]="!form.valid"
+      type="submit"
+      (click)="save()"
+      translate="Save"
+    ></button>
+  </mat-dialog-actions>
+</form>

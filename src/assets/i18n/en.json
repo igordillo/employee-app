@@ -1,0 +1,23 @@
+{
+  "Sitetitle": "Employees APP",
+  "Language": "Select language",
+  "Id": "Id",
+  "Name": "Name",
+  "Surname": "Surname",
+  "DateOfBirth": "Date of birth",
+  "WorkPosition": "Work position",
+  "NoRecordsAvailable": "No records available",
+  "ItemsPerPage": "items per page",
+  "SearchPlaceholder": "Search by text",
+  "Confirm": "Confirm",
+  "Cancel": "Cancel",
+  "Delete": "Delete employee",
+  "DeleteText": "Are you sure you want to delete the employee? This action cannot be reversed",
+  "DeleteSuccess": "Employee was delete successfuly",
+  "Employee": "Employee",
+  "Add": "Add",
+  "Refresh": "Refresh",
+  "Edit": "Edit",
+  "Save": "Save",
+  "Close": "Close"
+}

@@ -1,15 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { EMPLOYEES_API_ENDPOINT } from '@core/constants';
+import { DEFAULT_LANG, EMPLOYEES_API_ENDPOINT, FORMAT_DATE } from '@core/constants';
 import { Employee, QueryField } from '@core/models/employee.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { formatDate } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class EmployeeService {
   private readonly employees$ = new BehaviorSubject<Employee[]>([]);
 
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(
+    private readonly httpClient: HttpClient,
+  ) {}
 
   public getAllEmployees(): void {
     this.httpClient
@@ -23,11 +26,21 @@ export class EmployeeService {
     return this.employees$.asObservable();
   }
 
-  public getEmployeesFiltered(field: QueryField, query: string): void {
+  public getEmployeesFiltered(query: string): void {
+    query = query.toLocaleLowerCase();
     this.httpClient
       .get<Employee[]>(EMPLOYEES_API_ENDPOINT)
       .pipe(
-        map((employees) => employees.filter((e) => e[field].includes(query)))
+        map((employees) =>
+          employees.filter(
+            (e) =>
+              String(e.id).includes(query) ||
+              e.name.toLocaleLowerCase().includes(query) ||
+              e.surname.toLocaleLowerCase().includes(query) ||
+              e.workPosition.toLocaleLowerCase().includes(query) ||
+              formatDate(e.dateOfBirth, FORMAT_DATE, DEFAULT_LANG).includes(query)
+          )
+        )
       )
       .subscribe((employees: Employee[]) => {
         this.employees$.next(employees);

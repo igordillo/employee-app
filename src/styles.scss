@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 30px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+  margin: 8px;
+}
+
+/**  Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+.toast-container {
+  position: fixed;
+  bottom: 10px;
+  margin: auto;
+  color: #ffffff;
+  & .ngx-toastr {
+    border-radius: 0;
+    box-shadow: none;
+    border-left: solid 30px rgba(255, 255, 255, 0.3);
+    padding: 15px 15px 15px 15px;
+    &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    }
+  }
+  & .toast-title {
+    font-weight: normal;
+  }
+  & .toast-error {
+    background-image: none;
+    background-color: #ee3f60;
+  }
+  & .toast-success {
+    background-image: none;
+    background-color: #00a695;
+  }
+  & .toast-info {
+    background-image: none;
+    background-color: #057fc2;
+  }
+  & .toast-warning {
+    background-image: none;
+    background-color: #f1bd4d;
+  }
+}
