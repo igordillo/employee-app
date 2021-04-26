@@ -28,6 +28,7 @@ import {
 import { of } from 'rxjs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../shared/material/material.module';
+import { ValidateFormService } from '../core/services/validate-form.service';
 
 describe('EmployeeFormDialogComponent', () => {
   let component: EmployeeFormDialogComponent;
@@ -62,6 +63,7 @@ describe('EmployeeFormDialogComponent', () => {
       providers: [
         EmployeeService,
         TranslateService,
+        ValidateFormService,
         {
           provide: MatDialogRef,
           useValue: { mockDialogRef },

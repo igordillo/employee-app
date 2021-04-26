@@ -13,8 +13,8 @@ export class ValidateFormService {
    * @param field Field object
    */
   getError(name: string, field: any): string {
-    debugger
     name = this.translate.instant(name);
+
     if (field.errors) {
       if (field.errors.required) {
         return this.translate.instant('ValidationRequired', {field: name});

@@ -19,6 +19,7 @@ import { EmployeeDialogData, EmployeeFormDialogComponent } from '../employee-for
 import { formatDate } from '@angular/common';
 import { DEFAULT_LANG, FORMAT_DATE } from '@core/constants';
 import { MaterialModule } from '../shared/material/material.module';
+import { ValidateFormService } from '../core/services/validate-form.service';
 
 
 let translations: any = { "CARDS_TITLE": "This is a test" };
@@ -71,7 +72,7 @@ describe('EmployeeListComponent', () => {
         ToastrModule.forRoot(),
         NoopAnimationsModule
       ],
-      providers: [EmployeeService, TranslateService],
+      providers: [EmployeeService, TranslateService, ValidateFormService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
