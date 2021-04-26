@@ -3,11 +3,13 @@ import {
   Component,
   Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FORMAT_DATE } from '@core/constants';
 import { Employee } from '@core/models/employee.model';
 import { EmployeeService } from '@core/services/employee.service';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -31,6 +33,8 @@ export class EmployeeListComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   private _employees: Employee[] | null = [];
   public FORMAT_DATE = FORMAT_DATE;
+  @ViewChild(NgbPagination)
+  pagination!: NgbPagination;
 
   searchInput = '';
   page = 1;
@@ -126,11 +130,10 @@ export class EmployeeListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((actionCompleted: boolean) => {
       if (actionCompleted) {
-        if (action === 'Add') {
-          const lastPage = Math.ceil(this.collectionSize / this.pageSize) + 1;
-          this.page = lastPage;
-        }
         this.reloadAndFilterEmployees();
+        if (action === 'Add') {
+          this.page = this.pagination.pageCount + 1;
+        }
       }
     });
   }

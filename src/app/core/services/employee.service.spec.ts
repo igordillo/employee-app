@@ -33,10 +33,6 @@ describe('EmployeeService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should not immediately connect to the server', () => {
-    httpMock.expectNone({});
-  });
-
   it('getAllEmployes', () => {
     const emplooyees: Employee[] = [
       {

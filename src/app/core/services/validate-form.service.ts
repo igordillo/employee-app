@@ -18,7 +18,7 @@ export class ValidateFormService {
     if (field.errors) {
       if (field.errors.required) {
         return this.translate.instant('ValidationRequired', {field: name});
-      } else if (field.errors.pattern.requiredPattern === String(namesRegex)){
+      } else if (field.errors?.pattern?.requiredPattern === String(namesRegex)){
         return this.translate.instant('ValidationInvalidName', {field: name});
       }
     }

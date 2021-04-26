@@ -5,12 +5,7 @@
   <mat-dialog-content>
     <div class="row">
       <mat-form-field>
-        <input
-          maxlength="30"
-          matInput
-          [placeholder]="('Name' | translate) + '*'"
-          formControlName="name"
-        />
+        <input maxlength="30" matInput [placeholder]="('Name' | translate) + '*'" formControlName="name" />
         <mat-error *ngIf="form.get('name')?.errors && form.get('name')?.touched">
           {{validateFormService.getError('Name', form.get('name'))}}
         </mat-error>
@@ -19,12 +14,7 @@
 
     <div class="row">
       <mat-form-field>
-        <input
-          maxlength="30"
-          matInput
-          [placeholder]="('Surname' | translate) + '*'"
-          formControlName="surname"
-        />
+        <input maxlength="30" matInput [placeholder]="('Surname' | translate) + '*'" formControlName="surname" />
         <mat-error *ngIf="form.get('surname')?.errors && form.get('surname')?.touched">
           {{validateFormService.getError('Surname', form.get('surname'))}}
         </mat-error>
@@ -33,10 +23,7 @@
 
     <div class="row">
       <mat-form-field>
-        <mat-select
-          formControlName="workPosition"
-          [placeholder]="('WorkPosition' | translate) + '*'"
-        >
+        <mat-select formControlName="workPosition" [placeholder]="('WorkPosition' | translate) + '*'">
           <mat-option *ngFor="let wp of workPositions" [value]="wp">
             {{ wp }}
           </mat-option>
@@ -51,22 +38,19 @@
   <div class="row">
     <mat-form-field appearance="fill">
       <mat-label>{{ ("DateOfBirth" | translate) + "*" }}</mat-label>
-      <input matInput id="inputDate" [matDatepicker]="picker" formControlName="dateOfBirth" [max]="maxDate" [disabled]="true"/>
+      <input matInput id="inputDate" [matDatepicker]="picker" formControlName="dateOfBirth" [max]="maxDate"
+        [readonly]="true" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker disabled="false"></mat-datepicker>
+      <mat-error *ngIf="form.get('dateOfBirth')?.errors && form.get('dateOfBirth')?.touched">
+        {{validateFormService.getError('DateOfBirth', form.get('dateOfBirth'))}}
+      </mat-error>
     </mat-form-field>
   </div>
 
   <mat-dialog-actions class="float-right">
     <button mat-raised-button (click)="close()" translate="Close"></button>
-    <button
-      mat-raised-button
-      color="primary"
-      class="ml-2"
-      [disabled]="!form.valid"
-      type="submit"
-      (click)="save()"
-      translate="Save"
-    ></button>
+    <button mat-raised-button color="primary" class="ml-2" [disabled]="!form.valid" type="submit" (click)="save()"
+      translate="Save"></button>
   </mat-dialog-actions>
 </form>

@@ -80,10 +80,7 @@ describe('EmployeeFormDialogComponent', () => {
     employeeService = fixture.debugElement.injector.get(EmployeeService);
     workPositionsService = fixture.debugElement.injector.get(WorkPositionsService);
     spyOn(workPositionsService, 'getAllWorkPositions').and.callFake(() => of(['full-stack developer', 'scrum master']));
-
     fixture.detectChanges();
-
-
   });
 
   it('should create', () => {
@@ -128,5 +125,4 @@ describe('EmployeeFormDialogComponent', () => {
     component.save();
     expect(spyComponent).toHaveBeenCalled();
   })
-
 });

@@ -22,14 +22,6 @@ import { MaterialModule } from '../shared/material/material.module';
 import { ValidateFormService } from '../core/services/validate-form.service';
 
 
-let translations: any = { "CARDS_TITLE": "This is a test" };
-
-class FakeLoader implements TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
-    return of(translations);
-  }
-}
-
 const employees: Employee[] = [
   {
     "id": 1,
@@ -51,10 +43,6 @@ export function httpTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
 
-const mockDialogRef = {
-  close: jasmine.createSpy('close'),
-};
-
 const dataDialog: EmployeeDialogData = {
   action: 'Add',
   employee: {
@@ -69,6 +57,8 @@ describe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
   let fixture: ComponentFixture<EmployeeListComponent>;
   let employeeService: EmployeeService;
+  let dialogSpy: jasmine.Spy;
+  let dialogRefSpyObj = jasmine.createSpyObj({ afterClosed: of({}), close: null });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -99,6 +89,7 @@ describe('EmployeeListComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     employeeService = fixture.debugElement.injector.get(EmployeeService);
+    dialogSpy = spyOn(fixture.debugElement.injector.get(MatDialog), 'open').and.returnValue(dialogRefSpyObj);
   });
 
   it('should create', () => {
@@ -144,7 +135,7 @@ describe('EmployeeListComponent', () => {
     expect(spy).toHaveBeenCalled();
   })
 
-  it('reloadAndFilterEmployees', ()=>{
+  it('reloadAndFilterEmployees', () => {
 
     spyOn(employeeService, 'getAllEmployees').and.callFake(() => of(employees));
     spyOn(employeeService, 'getEmployeesFiltered').and.callFake(() => of(employees));
@@ -156,6 +147,34 @@ describe('EmployeeListComponent', () => {
     component.searchInput = 'Isaac';
 
     component.reloadAndFilterEmployees();
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('onDeleteButton', () => {
+    spyOn(employeeService, 'deleteEmployee').and.callFake(() => of({}));
+
+    const spy = spyOn(component, 'onDeleteButton').and.callThrough();
+
+
+    component.onDeleteButton(employees[0]);
+
+    expect(spy).toHaveBeenCalled();
+
+  });
+
+  it('onEditButton', () => {
+    const employee: Employee = {
+      "id": 1,
+      "name": "Isaac",
+      "surname": "Gordillo gómezasd",
+      "workPosition": "full-stack developer",
+      "dateOfBirth": "1990-12-20T23:00:00.000Z"
+    };
+
+    const spy = spyOn(component, 'onEditButton').and.callThrough();
+
+    component.onEditButton(employee);
 
     expect(spy).toHaveBeenCalled();
   });
