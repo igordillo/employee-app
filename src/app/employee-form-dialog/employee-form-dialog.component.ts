@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from '@core/models/employee.model';
 import { EmployeeService } from '@core/services/employee.service';
+import { ValidateFormService } from '@core/services/validate-form.service';
 import { WorkPositionsService } from '@core/services/work-positions.service';
 import { capitalizeText } from '@core/utils';
 import { TranslateService } from '@ngx-translate/core';
@@ -20,6 +21,7 @@ export interface EmployeeDialogData {
   selector: 'app-employee-form-dialog',
   templateUrl: './employee-form-dialog.component.html',
   styleUrls: ['./employee-form-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeeFormDialogComponent implements OnInit {
   form: FormGroup = this.fb.group({});
@@ -33,7 +35,9 @@ export class EmployeeFormDialogComponent implements OnInit {
     private readonly dialogRef: MatDialogRef<EmployeeFormDialogComponent>,
     private readonly toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: EmployeeDialogData,
-    private readonly translate: TranslateService
+    private readonly translate: TranslateService,
+    public readonly validateFormService: ValidateFormService,
+
   ) {}
 
   ngOnInit(): void {

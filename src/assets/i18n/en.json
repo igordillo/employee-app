@@ -21,5 +21,8 @@
   "Save": "Save",
   "Close": "Close",
   "UserCreatedMsg": "User was created successfuly",
-  "UserUpdatedMsg": "User was updated successfuly"
+  "UserUpdatedMsg": "User was updated successfuly",
+  "ValidationRequired":"{{field}} is required",
+  "ValidationInvalidName":"Invalid {{field}}",
+  "Actions": "Actions"
 }

@@ -11,6 +11,9 @@
           [placeholder]="('Name' | translate) + '*'"
           formControlName="name"
         />
+        <mat-error *ngIf="form.get('name')?.errors && form.get('name')?.touched">
+          {{validateFormService.getError('Name', form.get('name'))}}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -22,6 +25,9 @@
           [placeholder]="('Surname' | translate) + '*'"
           formControlName="surname"
         />
+        <mat-error *ngIf="form.get('surname')?.errors && form.get('surname')?.touched">
+          {{validateFormService.getError('Surname', form.get('surname'))}}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -35,6 +41,9 @@
             {{ wp }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="form.get('workPosition')?.errors && form.get('workPosition')?.touched">
+          {{validateFormService.getError('WorkPosition', form.get('workPosition'))}}
+        </mat-error>
       </mat-form-field>
     </div>
   </mat-dialog-content>

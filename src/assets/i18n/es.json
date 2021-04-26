@@ -21,5 +21,8 @@
   "Save": "Guardar",
   "Close": "Cerrar",
   "UserCreatedMsg": "El usuario se creó correctamente",
-  "UserUpdatedMsg": "El usuario se actualizó correctamente"
+  "UserUpdatedMsg": "El usuario se actualizó correctamente",
+  "ValidationRequired":"{{field}} es obligatorio",
+  "ValidationInvalidName":"{{field}} no es válido",
+  "Actions": "Acciones"
 }
