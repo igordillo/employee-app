@@ -64,4 +64,43 @@ describe('EmployeeService', () => {
     })
 
   })
+
+  it('getEmployeesFiltered', () => {
+    const emplooyees: Employee[] = [
+      {
+        "id": 1,
+        "name": "Isaac",
+        "surname": "Gordillo gómezasd",
+        "workPosition": "full-stack developer",
+        "dateOfBirth": "1990-12-20T23:00:00.000Z"
+      },
+      {
+        "id": 2,
+        "name": "Sara",
+        "surname": "Lopez",
+        "workPosition": "full-stack developer",
+        "dateOfBirth": "2021-04-28T22:00:00.000Z"
+      },
+    ];
+
+    const emplooyeesFiltered: Employee[] = [
+      {
+        "id": 1,
+        "name": "Isaac",
+        "surname": "Gordillo gómezasd",
+        "workPosition": "full-stack developer",
+        "dateOfBirth": "1990-12-20T23:00:00.000Z"
+      }
+    ];
+
+    httpClientSpy.get.and.returnValue(of(emplooyees));
+
+    service.getEmployeesFiltered('Isaac');
+
+    service.employeesStore$.subscribe(resp => {
+      console.log(resp);
+
+      expect(resp).toEqual(emplooyeesFiltered);
+    })
+  })
 });
