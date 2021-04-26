@@ -7,6 +7,7 @@ import { WorkPositionsService } from '@core/services/work-positions.service';
 import { capitalizeText } from '@core/utils';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { namesRegex } from '../core/utils';
 
 export declare type Action = 'Add' | 'Edit';
 
@@ -41,8 +42,8 @@ export class EmployeeFormDialogComponent implements OnInit {
       .subscribe((positions: string[]) => (this.workPositions = positions));
 
     this.form = this.fb.group({
-      name: [this.data.employee.name, Validators.required],
-      surname: [this.data.employee.surname, Validators.required],
+      name: [this.data.employee.name, [Validators.required, Validators.pattern(namesRegex)]],
+      surname: [this.data.employee.surname, [Validators.required, Validators.pattern(namesRegex)]],
       dateOfBirth: [
         new Date(this.data.employee.dateOfBirth),
         Validators.required,
