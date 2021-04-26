@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -55,10 +56,11 @@ export class EmployeeListComponent implements OnInit {
     this.refreshEmployees();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onRefreshButton(): void {
     this.employeeService.getAllEmployees();
+    this.searchInput = '';
   }
 
   refreshEmployees(): void {
