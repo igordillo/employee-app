@@ -22,7 +22,6 @@ export class ValidateFormService {
         return this.translate.instant('ValidationInvalidName', {field: name});
       }
     }
-    console.log(field.errors);
 
     return '';
   }

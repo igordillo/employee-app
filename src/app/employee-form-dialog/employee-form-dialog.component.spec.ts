@@ -29,10 +29,14 @@ import { of } from 'rxjs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../shared/material/material.module';
 import { ValidateFormService } from '../core/services/validate-form.service';
+import { Employee } from '@core/models/employee.model';
+import { WorkPositionsService } from '../core/services/work-positions.service';
 
 describe('EmployeeFormDialogComponent', () => {
   let component: EmployeeFormDialogComponent;
   let fixture: ComponentFixture<EmployeeFormDialogComponent>;
+  let employeeService: EmployeeService;
+  let workPositionsService: WorkPositionsService;
 
   const mockDialogRef = {
     close: jasmine.createSpy('close'),
@@ -64,11 +68,7 @@ describe('EmployeeFormDialogComponent', () => {
         EmployeeService,
         TranslateService,
         ValidateFormService,
-        {
-          provide: MatDialogRef,
-          useValue: { mockDialogRef },
-        },
-        { provide: MAT_DIALOG_DATA, useValue: dataDialog },
+        { provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: dataDialog }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA,],
     }).compileComponents();
@@ -77,10 +77,56 @@ describe('EmployeeFormDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EmployeeFormDialogComponent);
     component = fixture.componentInstance;
+    employeeService = fixture.debugElement.injector.get(EmployeeService);
+    workPositionsService = fixture.debugElement.injector.get(WorkPositionsService);
+    spyOn(workPositionsService, 'getAllWorkPositions').and.callFake(() => of(['full-stack developer', 'scrum master']));
+
     fixture.detectChanges();
+
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Add and Edit an Employee', () => {
+    const employee: Employee = {
+      id: 1,
+      name: 'name',
+      surname: 'surname',
+      workPosition: 'front developer',
+      dateOfBirth: new Date().toLocaleDateString(),
+    };
+
+    component.data = {
+      action: 'Add',
+      employee
+    }
+
+    const response: Employee[] = [
+      {
+        id: 1,
+        name: 'name',
+        surname: 'surname',
+        workPosition: 'front developer',
+        dateOfBirth: new Date().toLocaleDateString(),
+      }
+    ]
+
+    spyOn(component, 'close');
+    spyOn(employeeService, 'addEmployee').and.returnValue(of(employee));
+    spyOn(employeeService, 'editEmployee').and.returnValue(of(employee));
+
+    const spyComponent = spyOn(component, 'save').and.callThrough();
+
+
+    component.save()
+    expect(spyComponent).toHaveBeenCalled();
+
+    component.data.action = 'Edit';
+    component.save();
+    expect(spyComponent).toHaveBeenCalled();
+  })
+
 });

@@ -30,6 +30,23 @@ class FakeLoader implements TranslateLoader {
   }
 }
 
+const employees: Employee[] = [
+  {
+    "id": 1,
+    "name": "Isaac",
+    "surname": "Gordillo gómezasd",
+    "workPosition": "full-stack developer",
+    "dateOfBirth": "1990-12-20T23:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Sara",
+    "surname": "Lopez",
+    "workPosition": "full-stack developer",
+    "dateOfBirth": "2021-04-28T22:00:00.000Z"
+  },
+];
+
 export function httpTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
@@ -89,22 +106,7 @@ describe('EmployeeListComponent', () => {
   });
 
   it('refreshEmployees', () => {
-    const employees: Employee[] = [
-      {
-        "id": 1,
-        "name": "Isaac",
-        "surname": "Gordillo gómezasd",
-        "workPosition": "full-stack developer",
-        "dateOfBirth": "1990-12-20T23:00:00.000Z"
-      },
-      {
-        "id": 2,
-        "name": "Sara",
-        "surname": "Lopez",
-        "workPosition": "full-stack developer",
-        "dateOfBirth": "2021-04-28T22:00:00.000Z"
-      },
-    ];
+
 
     component.employees = employees;
 
@@ -141,4 +143,21 @@ describe('EmployeeListComponent', () => {
     component.onEditButton(employee);
     expect(spy).toHaveBeenCalled();
   })
+
+  it('reloadAndFilterEmployees', ()=>{
+
+    spyOn(employeeService, 'getAllEmployees').and.callFake(() => of(employees));
+    spyOn(employeeService, 'getEmployeesFiltered').and.callFake(() => of(employees));
+
+    const spy = spyOn(component, 'reloadAndFilterEmployees').and.callThrough();
+
+    component.reloadAndFilterEmployees();
+
+    component.searchInput = 'Isaac';
+
+    component.reloadAndFilterEmployees();
+
+    expect(spy).toHaveBeenCalled();
+  });
 });
+

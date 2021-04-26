@@ -32,7 +32,7 @@ export class EmployeeFormDialogComponent implements OnInit {
     private readonly workPositionsService: WorkPositionsService,
     private readonly employeeService: EmployeeService,
     private readonly fb: FormBuilder,
-    private readonly dialogRef: MatDialogRef<EmployeeFormDialogComponent>,
+    public readonly dialogRef: MatDialogRef<EmployeeFormDialogComponent>,
     private readonly toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: EmployeeDialogData,
     private readonly translate: TranslateService,

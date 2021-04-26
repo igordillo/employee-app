@@ -98,8 +98,6 @@ describe('EmployeeService', () => {
     service.getEmployeesFiltered('Isaac');
 
     service.employeesStore$.subscribe(resp => {
-      console.log(resp);
-
       expect(resp).toEqual(emplooyeesFiltered);
     })
   })
