@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Install dependencies
 Run `npm install` to install the dependencies
 
-## Deployment json-server
+## Deployment API REST json-server
 
 Run `npm run json-server` to deploy the json-server API
 
