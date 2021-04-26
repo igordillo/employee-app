@@ -42,9 +42,9 @@
   <div class="row">
     <mat-form-field appearance="fill">
       <mat-label>{{ ("DateOfBirth" | translate) + "*" }}</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+      <input matInput id="inputDate" [matDatepicker]="picker" formControlName="dateOfBirth" [max]="maxDate" [disabled]="true"/>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
     </mat-form-field>
   </div>
 

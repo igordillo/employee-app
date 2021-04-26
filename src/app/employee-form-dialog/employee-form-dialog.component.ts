@@ -23,6 +23,7 @@ export interface EmployeeDialogData {
 export class EmployeeFormDialogComponent implements OnInit {
   form: FormGroup = this.fb.group({});
   workPositions: string[] = [];
+  maxDate = new Date();
 
   constructor(
     private readonly workPositionsService: WorkPositionsService,
