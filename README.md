@@ -7,7 +7,7 @@ Run `npm install` to install the dependencies
 
 ## Deployment API REST json-server
 
-Run `npm run json-server` to deploy the json-server API
+Run `npm run json-server` in the root folder of the project to deploy the json-server API
 
 ## Development server
 
