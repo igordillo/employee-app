@@ -2,7 +2,7 @@
   "employees": [
     {
       "id": 1,
-      "name": "Israelasdsad",
+      "name": "Israel",
       "surname": "Gordillo Gómez",
       "workPosition": "help desk",
       "dateOfBirth": "1990-12-07T23:00:00.000Z"
