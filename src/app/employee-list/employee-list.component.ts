@@ -30,22 +30,25 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeListComponent implements OnInit {
-  public employeesDataTable: Employee[] = [];
-  // tslint:disable-next-line: variable-name
-  private _employees: Employee[] | null = [];
-  public FORMAT_DATE = FORMAT_DATE;
-  @ViewChild(NgbPagination)
-  pagination!: NgbPagination;
 
-  searchInput = '';
-  page = 1;
-  pageSize = 4;
-  collectionSize = 0;
   @Input() set employees(value: Employee[] | null) {
     this._employees = value;
     this.collectionSize = value ? value.length : 0;
     this.refreshEmployees();
   }
+
+  @ViewChild('ngbPagination') pagination: NgbPagination | undefined;
+
+  public employeesDataTable: Employee[] = [];
+  // tslint:disable-next-line: variable-name
+  public FORMAT_DATE = FORMAT_DATE;
+
+  public searchInput = '';
+  public page = 1;
+  public pageSize = 4;
+  public collectionSize = 0;
+
+  private _employees: Employee[] | null = [];
 
   constructor(
     private readonly employeeService: EmployeeService,
@@ -134,7 +137,7 @@ export class EmployeeListComponent implements OnInit {
       if (actionCompleted) {
         this.reloadAndFilterEmployees();
         if (action === 'Add') {
-          this.page = this.pagination.pageCount + 1;
+          this.page = this.pagination ? this.pagination.pageCount + 1 : 0;
         }
       }
     });
